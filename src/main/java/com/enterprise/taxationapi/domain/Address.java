@@ -24,7 +24,7 @@ public class Address {
     private String neighborhood;
     private String complement;
     private String reference;
-    private int cep;
+    private int postalCode;
     private String city;
     private String state;
 }

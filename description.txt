@@ -1,0 +1,15 @@
+Quais são as informações que devem estar presentes em cada um
+desses cadastros?
+Cadastro Imobiliário:
+i) endereço completo do imóvel (nome da rua, no, cep e bairro);
+ii) nome, identificação e telefone do dono ou responsável pelo imóvel.
+iii) a dimensão e o valor do imóvel.
+
+Cadastro Mobiliário:
+i) nome da empresa ou do empreendedor;
+ii) endereço completo do imóvel sede da empresa (nome da rua, no, cep
+e bairro);
+iii) nome, identificação e telefone do dono ou responsável pela empresa.
+iv) CNPJ ou CPF.
+v) atividade desenvolvida pela empresa
+vi) código CNAE dela.
