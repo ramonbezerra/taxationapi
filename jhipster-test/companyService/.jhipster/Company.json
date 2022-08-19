@@ -1,0 +1,48 @@
+{
+  "applications": ["companyService"],
+  "changelogDate": "20220819202501",
+  "clientRootFolder": "companyService",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "company",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cnpj",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "cnae",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "principalActivity",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "companyService",
+  "name": "Company",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "owner",
+      "ownerSide": true,
+      "relationshipName": "owner",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "address",
+      "ownerSide": true,
+      "relationshipName": "address",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

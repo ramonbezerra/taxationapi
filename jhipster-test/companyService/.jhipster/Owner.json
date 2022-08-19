@@ -1,0 +1,35 @@
+{
+  "applications": ["companyService", "imobileService"],
+  "changelogDate": "20220819202601",
+  "clientRootFolder": "companyService",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "owner",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "identification",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "cpf",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "companyService",
+  "name": "Owner",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}
