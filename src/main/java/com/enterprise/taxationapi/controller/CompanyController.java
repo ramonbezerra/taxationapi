@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.enterprise.taxationapi.service.CompanyService;
+import com.enterprise.taxationapi.service.implementation.CompanyServiceImpl;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class CompanyController {
 
-    private final CompanyService companyService;
+    private final CompanyServiceImpl companyServiceImpl;
     
     @GetMapping
     public ResponseEntity<?> listCompanyByCity(@RequestParam String city) {
