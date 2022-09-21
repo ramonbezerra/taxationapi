@@ -8,7 +8,7 @@ import com.enterprise.taxationapi.domain.Company;
 
 public interface CompanyRepository extends JpaRepository<Company, Long>{
     
-    public Optional<Company> findByName (String name);
+    Optional<Company> findByName (String name);
 
-    public Optional<Company> findByCnpj (int cnpj);
+    Optional<Company> findByCnpj (int cnpj);
 }
