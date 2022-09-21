@@ -6,4 +6,5 @@ import com.enterprise.taxationapi.domain.Address;
 
 public interface AddressRepository extends JpaRepository<Address, Long>{
     
+    Address findByStreetNameAndNumber (String streetName, int number);
 }
