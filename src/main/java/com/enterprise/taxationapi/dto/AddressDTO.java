@@ -6,7 +6,7 @@ import lombok.Data;
 public class AddressDTO {
     
     private String streetName;
-    private String number;
+    private int number;
     private String neighborhood;
     private String complement;
     private String reference;

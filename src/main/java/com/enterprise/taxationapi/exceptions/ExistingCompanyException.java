@@ -1,8 +1,8 @@
 package com.enterprise.taxationapi.exceptions;
 
-public class ExistingCompanyExcecption extends Exception{
+public class ExistingCompanyException extends Exception{
     
-    public ExistingCompanyExcecption (String msg) {
+    public ExistingCompanyException (String msg) {
         super(msg);
     }
 }
