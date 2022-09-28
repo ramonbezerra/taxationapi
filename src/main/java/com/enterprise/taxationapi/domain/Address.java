@@ -20,7 +20,7 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String streetName;
-    private String number;
+    private int number;
     private String neighborhood;
     private String complement;
     private String reference;
