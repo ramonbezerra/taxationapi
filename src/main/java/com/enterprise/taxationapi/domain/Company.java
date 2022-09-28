@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue ;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,6 +28,7 @@ public class Company {
     private String principalActivity;    
     @OneToOne
     private Address address;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name="owner_id", nullable = false)
     private Owner owner;
 }
