@@ -1,5 +1,7 @@
 package com.enterprise.taxationapi.dto;
 
+import java.time.LocalDate;
+
 import com.enterprise.taxationapi.domain.Address;
 import com.enterprise.taxationapi.domain.Owner;
 
@@ -17,7 +19,7 @@ public class CompanyDTO {
     private Long municipalRegistry;
     
     private Long cnae;
-    private String beginningDate;
+    private LocalDate beginningDate;
     private String activity;
 
     private Address address;

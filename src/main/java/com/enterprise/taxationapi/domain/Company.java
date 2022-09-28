@@ -1,5 +1,7 @@
 package com.enterprise.taxationapi.domain;
 
+import java.time.LocalDate;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue ;
@@ -15,7 +17,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "company")
+@Table(name = "companies")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,11 +32,11 @@ public class Company {
     private Long municipalRegistry;
     
     private Long cnae;
-    private String beginningDate;
+    private LocalDate beginningDate;
     private String activity;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "company_id")
+    @JoinColumn(name = "address_id")
     private Address address;
 
     private Long phone;

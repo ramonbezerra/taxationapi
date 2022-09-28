@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AddressDTO {
     
-    private String address;
+    private String street;
     private int number;
     private String neighbourhood;
 

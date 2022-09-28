@@ -38,7 +38,7 @@ public class CompanyController {
     @Autowired
     private final CompanyMapper companyMapper;
     
-    @GetMapping(value = "/all")
+    @GetMapping
     public ResponseEntity<?> listAllCompanies() {
         List<Company> companies = companyService.listAllCompanies();
         List<CompanyDTO> companiesDTO = new ArrayList<>();
@@ -50,7 +50,7 @@ public class CompanyController {
         return ResponseEntity.ok(companiesDTO);
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<?> listById(@PathVariable Long id){
         try {
             Company company = companyService.findById(id);

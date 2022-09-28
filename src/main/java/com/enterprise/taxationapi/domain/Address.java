@@ -11,7 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "company")
+@Table(name = "addresses")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,7 +20,7 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String address;
+    private String street;
     private Integer number;
     private String neighbourhood;
 

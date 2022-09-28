@@ -1,7 +1,5 @@
 package com.enterprise.taxationapi.dto;
 
-import com.enterprise.taxationapi.domain.Address;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,5 +8,5 @@ import lombok.NoArgsConstructor;
 public class UpdateCompanyAddressDTO {
     
     private Long id;
-    private Address address;
+    private AddressDTO address;
 }
