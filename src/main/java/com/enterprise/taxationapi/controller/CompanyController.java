@@ -2,12 +2,12 @@ package com.enterprise.taxationapi.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -65,6 +65,27 @@ public class CompanyController {
             (companyMapper.convertFromCompanyDTO(companyDTO)), HttpStatus.CREATED);
         } catch (ExistingCompanyException ex) {
             return ResponseEntity.badRequest().body(new ErrorDTO(ex.getMessage()));
+        }
+    }
+
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateCompany (@RequestBody CompanyDTO companyDTO, @PathVariable Long id){
+        try {
+            Company company = companyMapper.convertFromCompanyDTO(companyDTO);
+            return new ResponseEntity<>(companyService.updateCompany(id, company), HttpStatus.OK);
+        } catch (ExistingCompanyException ex) {
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteCompany (@PathVariable Long id) {
+        try {
+            companyService.deleteCompany(id);
+            return ResponseEntity.noContent().build();
+        } catch (CompanyNotFoundException ex){
+            return ResponseEntity.badRequest().body(ex.getMessage());
         }
     }
 }

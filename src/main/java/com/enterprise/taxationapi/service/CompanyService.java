@@ -14,7 +14,7 @@ public interface CompanyService {
 
     public Company createCompany (Company company) throws ExistingCompanyException;
 
-    public Company updateCompany (Long id, Company company);
+    public Company updateCompany (Long id, Company company) throws ExistingCompanyException;
 
     public List<Company> listAllCompanies ();
 
@@ -22,5 +22,5 @@ public interface CompanyService {
 
     public Company findByCnpj (int cnpj) throws CompanyNotFoundException;
 
-    public void deleteCompany (Long id);
+    public void deleteCompany (Long id) throws CompanyNotFoundException;
 }

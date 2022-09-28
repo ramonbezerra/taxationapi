@@ -1,6 +1,7 @@
 package com.enterprise.taxationapi.service.implementation;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,9 +25,17 @@ public class CompanyServiceImpl implements CompanyService {
         return companyRepository.save(company);
     }
 
-    public Company updateCompany (Long id, Company company) {
-        company.setId(id);
-        return companyRepository.save(company);
+    public Company updateCompany (Long id, Company company) throws ExistingCompanyException {
+        if (!companyRepository.findById(id).isPresent()){
+            try {
+                return this.createCompany(company);
+            } catch (ExistingCompanyException ex) {
+                throw new ExistingCompanyException("Já existe uma empresa registrada com estes dados!");
+            }
+        } else{
+            company.setId(id);
+            return companyRepository.save(company);
+        }
     }
 
     public List<Company> listAllCompanies () {
@@ -45,8 +54,12 @@ public class CompanyServiceImpl implements CompanyService {
         );
     }
 
-    public void deleteCompany (Long id) {
-        Company companyToDelete = companyRepository.findById(id).get();
-        companyRepository.delete(companyToDelete);
+    public void deleteCompany (Long id) throws CompanyNotFoundException {
+        Optional<Company> companyToDelete = companyRepository.findById(id);
+        if (!companyToDelete.isPresent()){
+            companyRepository.delete(companyToDelete.get());
+        } else {
+            throw new CompanyNotFoundException("Não há nenhuma empresa registrada com esse ID!");
+        }
     }
 }
