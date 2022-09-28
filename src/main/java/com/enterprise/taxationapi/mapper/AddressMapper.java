@@ -1,36 +1,24 @@
 package com.enterprise.taxationapi.mapper;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.enterprise.taxationapi.domain.Address;
 import com.enterprise.taxationapi.dto.AddressDTO;
 
-
 public class AddressMapper {
     
+    @Autowired
+    private ModelMapper modelMapper;
+
     public AddressDTO convertToAddressDTO (Address address) {
-        AddressDTO addressDTO = new AddressDTO();
-
-        addressDTO.setCity(address.getCity());
-        addressDTO.setComplement(address.getComplement());
-        addressDTO.setNeighborhood(address.getNeighborhood());
-        addressDTO.setNumber((address.getNumber()));
-        addressDTO.setPostalCode(address.getPostalCode());
-        addressDTO.setState(address.getState());
-        addressDTO.setStreetName(address.getStreetName());
-
+        AddressDTO addressDTO = modelMapper.map(address, AddressDTO.class);
         return addressDTO;
     }
 
     public Address convertFromAddressDTO (AddressDTO addressDTO) {
-        Address address = new Address();
-
-        address.setCity(addressDTO.getCity());
-        address.setComplement(addressDTO.getComplement());
-        address.setNeighborhood(addressDTO.getNeighborhood());
-        address.setNumber((addressDTO.getNumber()));
-        address.setPostalCode(addressDTO.getPostalCode());
-        address.setState(addressDTO.getState());
-        address.setStreetName(addressDTO.getStreetName());
-
+        Address address = modelMapper.map(addressDTO, Address.class);
         return address;
     }
+    
 }

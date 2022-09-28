@@ -11,20 +11,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "address")
+@Table(name = "company")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Address {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String streetName;
-    private int number;
-    private String neighborhood;
-    private String complement;
-    private String reference;
-    private int postalCode;
-    private String city;
-    private String state;
+    private String address;
+    private Integer number;
+    private String neighbourhood;
+
 }

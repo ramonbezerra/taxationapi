@@ -1,5 +1,7 @@
 package com.enterprise.taxationapi.dto;
 
+import com.enterprise.taxationapi.domain.Address;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,7 +10,14 @@ import lombok.NoArgsConstructor;
 public class OwnerDTO {
     
     private String name;
-    private Long identification;
-    private int cpf;
-    private int phone;
+    private Long cpfOrCnpj;
+    private Long rg;
+    private String ssp;
+
+    private Address address;
+    
+    private String email;
+    private Long phone;
+
+    private boolean newsletter;
 }

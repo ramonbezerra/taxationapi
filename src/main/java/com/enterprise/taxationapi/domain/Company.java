@@ -24,12 +24,24 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private int cnpj;
-    private int cnae;
-    private String principalActivity;    
-    @OneToOne(cascade = CascadeType.PERSIST)
+    private String fantasyName;
+
+    private Long cpfCnpj;
+    private Long municipalRegistry;
+    
+    private Long cnae;
+    private String beginningDate;
+    private String activity;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "company_id")
     private Address address;
+
+    private Long phone;
+    
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="owner_id", insertable = false, updatable = false)
     private Owner owner;
+
+
 }

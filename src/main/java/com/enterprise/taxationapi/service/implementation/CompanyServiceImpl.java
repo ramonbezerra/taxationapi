@@ -6,8 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.enterprise.taxationapi.domain.Address;
 import com.enterprise.taxationapi.domain.Company;
 import com.enterprise.taxationapi.exceptions.CompanyNotFoundException;
+import com.enterprise.taxationapi.exceptions.ExistingAddressException;
 import com.enterprise.taxationapi.exceptions.ExistingCompanyException;
 import com.enterprise.taxationapi.repository.CompanyRepository;
 import com.enterprise.taxationapi.service.CompanyService;
@@ -48,8 +50,8 @@ public class CompanyServiceImpl implements CompanyService {
         );
     }
 
-    public Company findByCnpj (int cnpj) throws CompanyNotFoundException{
-        return companyRepository.findByCnpj(cnpj).orElseThrow(
+    public Company findByCpfCnpj (int cpfCnpj) throws CompanyNotFoundException{
+        return companyRepository.findByCpfCnpj(cpfCnpj).orElseThrow(
             () -> new CompanyNotFoundException("Não há nenhuma empresa registrada com este nome!")
         );
     }
@@ -62,4 +64,18 @@ public class CompanyServiceImpl implements CompanyService {
             throw new CompanyNotFoundException("Não há nenhuma empresa registrada com esse ID!");
         }
     }
+
+    public Company updateAddress (Long id, Address address) throws ExistingAddressException, CompanyNotFoundException{
+        if (!companyRepository.findById(id).isPresent()) {
+            throw new CompanyNotFoundException("Não há nenhuma companhia registrada com este n° de inscrição!");
+        }
+        else if (companyRepository.findByAddress(address).isPresent()) {
+            throw new ExistingAddressException("Já existe uma empresa registrada neste endereço!");
+        }
+
+        Company companyEntity = companyRepository.findById(id).get();
+        companyEntity.setAddress(address);
+        return companyRepository.save(companyEntity);
+    }
+
 }

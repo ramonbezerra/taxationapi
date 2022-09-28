@@ -17,11 +17,6 @@ public class MapperSettings {
     }
 
     @Bean
-    public AddressMapper addressMapper () {
-        return new AddressMapper();
-    }
-
-    @Bean
     public CompanyMapper companyMapper () {
         return new CompanyMapper();
     }
@@ -29,5 +24,10 @@ public class MapperSettings {
     @Bean
     public OwnerMapper ownerMapper () {
         return new OwnerMapper();
+    }
+
+    @Bean
+    public AddressMapper addressMapper () {
+        return new AddressMapper();
     }
 }

@@ -1,16 +1,14 @@
 package com.enterprise.taxationapi.dto;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class AddressDTO {
     
-    private String streetName;
+    private String address;
     private int number;
-    private String neighborhood;
-    private String complement;
-    private String reference;
-    private int postalCode;
-    private String city;
-    private String state;
+    private String neighbourhood;
+
 }
