@@ -3,6 +3,7 @@ package com.enterprise.taxationapi.mapper;
 import com.enterprise.taxationapi.domain.Address;
 import com.enterprise.taxationapi.dto.AddressDTO;
 
+
 public class AddressMapper {
     
     public AddressDTO convertToAddressDTO (Address address) {

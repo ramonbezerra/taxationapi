@@ -23,6 +23,7 @@ public class CompanyMapper {
         Company company = new Company();
         
         company.setAddress(companyDTO.getAddress());
+        company.setPrincipalActivity(companyDTO.getPrincipalActivity());
         company.setCnae(companyDTO.getCnae());
         company.setCnpj(companyDTO.getCnpj());
         company.setName(companyDTO.getName());

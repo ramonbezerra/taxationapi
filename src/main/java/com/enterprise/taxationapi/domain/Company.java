@@ -1,5 +1,6 @@
 package com.enterprise.taxationapi.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue ;
 import javax.persistence.GenerationType;
@@ -26,9 +27,9 @@ public class Company {
     private int cnpj;
     private int cnae;
     private String principalActivity;    
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Address address;
-    @ManyToOne
-    @JoinColumn(name="owner_id", nullable = false)
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name="owner_id", insertable = false, updatable = false)
     private Owner owner;
 }
