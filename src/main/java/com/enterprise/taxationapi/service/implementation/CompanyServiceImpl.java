@@ -11,14 +11,18 @@ import com.enterprise.taxationapi.domain.Company;
 import com.enterprise.taxationapi.exceptions.CompanyNotFoundException;
 import com.enterprise.taxationapi.exceptions.ExistingAddressException;
 import com.enterprise.taxationapi.exceptions.ExistingCompanyException;
+import com.enterprise.taxationapi.repository.AddressRepository;
 import com.enterprise.taxationapi.repository.CompanyRepository;
 import com.enterprise.taxationapi.service.CompanyService;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class CompanyServiceImpl implements CompanyService {
 
-    @Autowired
-    private CompanyRepository companyRepository;
+    private final CompanyRepository companyRepository;
+    private final AddressRepository addressRepository;
 
     public Company createCompany (Company company) throws ExistingCompanyException {
         if (companyRepository.findByName(company.getName()).isPresent()) {
@@ -74,6 +78,9 @@ public class CompanyServiceImpl implements CompanyService {
         }
 
         Company companyEntity = companyRepository.findById(id).get();
+        Address addressEntity = addressRepository.findById(companyEntity.getAddress().getId()).get();
+
+        address.setId(addressEntity.getId());
         companyEntity.setAddress(address);
         return companyRepository.save(companyEntity);
     }
