@@ -43,9 +43,8 @@ public class CompanyController {
         List<Company> companies = companyService.listAllCompanies();
         List<CompanyDTO> companiesDTO = new ArrayList<>();
 
-        for (Company company : companies) {
+        for (Company company : companies) 
             companiesDTO.add(companyMapper.convertToCompanyDTO(company));
-        }
 
         return ResponseEntity.ok(companiesDTO);
     }
@@ -54,7 +53,7 @@ public class CompanyController {
     public ResponseEntity<?> listById(@PathVariable Long id){
         try {
             Company company = companyService.findById(id);
-            return ResponseEntity.ok(company);
+            return ResponseEntity.ok(companyMapper.convertToCompanyDTO(company));
         } catch (CompanyNotFoundException ex) {
             return ResponseEntity.badRequest().body(
                 new ErrorDTO(ex.getMessage()));

@@ -2,9 +2,6 @@ package com.enterprise.taxationapi.dto;
 
 import java.time.LocalDate;
 
-import com.enterprise.taxationapi.domain.Address;
-import com.enterprise.taxationapi.domain.Owner;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -22,9 +19,9 @@ public class CompanyDTO {
     private LocalDate beginningDate;
     private String activity;
 
-    private Address address;
+    private AddressDTO address;
     private Long phone;
 
-    private Owner owner;
+    private OwnerDTO owner;
     
 }

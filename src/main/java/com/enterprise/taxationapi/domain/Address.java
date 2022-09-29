@@ -22,6 +22,6 @@ public class Address {
     private Long id;
     private String street;
     private Integer number;
-    private String neighbourhood;
+    private String neighborhood;
 
 }
