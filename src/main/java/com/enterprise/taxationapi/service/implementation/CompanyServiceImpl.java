@@ -63,10 +63,9 @@ public class CompanyServiceImpl implements CompanyService {
     public void deleteCompany (Long id) throws CompanyNotFoundException {
         Optional<Company> companyToDelete = companyRepository.findById(id);
         if (!companyToDelete.isPresent()){
-            companyRepository.delete(companyToDelete.get());
-        } else {
             throw new CompanyNotFoundException("Não há nenhuma empresa registrada com esse ID!");
         }
+            companyRepository.delete(companyToDelete.get());
     }
 
     public Company updateAddress (Long id, Address address) throws ExistingAddressException, CompanyNotFoundException{

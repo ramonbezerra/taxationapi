@@ -74,8 +74,8 @@ public class CompanyController {
     @PutMapping("/{id}")
     public ResponseEntity<?> updateCompany (@RequestBody CompanyDTO companyDTO, @PathVariable Long id){
         try {
-            Company company = companyMapper.convertFromCompanyDTO(companyDTO);
-            return new ResponseEntity<>(companyService.updateCompany(id, company), HttpStatus.OK);
+            companyService.updateCompany(id, companyMapper.convertFromCompanyDTO(companyDTO));
+            return new ResponseEntity<>(companyDTO, HttpStatus.OK);
         } catch (ExistingCompanyException ex) {
             return ResponseEntity.badRequest().body(new ErrorDTO(ex.getMessage()));
         }
